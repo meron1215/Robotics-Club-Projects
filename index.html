@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<body style="background-color:#f5f5f5; font-family:Arial; padding:20px;">
+
+<h2>Password Strength Checker</h2>
+
+<p>Type your password:</p>
+<input type="password" id="pass" onkeyup="checkPassword()"
+       style="padding:8px; width:95%;">
+
+<p id="result" style="padding:10px; background-color:white; margin-top:10px;">
+    Password strength will be showed here after you start typing.
+</p>
+
+<p>
+    <a href="Explanation.html">DO YOU NEED EXPLANATION?</a>
+</p>
+
+<script>
+function checkPassword() {
+    let p = document.getElementById("pass").value;
+    let output = "";
+
+    if (p.length == 0) {
+        output = "Please type a password.";
+    }
+    else if (p.length < 4) {
+        output = "Very Weak";
+    }
+    else if (p.length < 6) {
+        output = "Weak";
+    }
+    else if (p.length >= 6 && p.match(/[0-9]/)) {
+        output = "Medium";
+    }
+    else if (p.length >= 8 && p.match(/[0-9]/) && p.match(/[A-Z]/)) {
+        output = "Strong";
+    }
+    else {
+        output = "Needs more improvement.";
+    }
+
+    document.getElementById("result").innerHTML = output;
+}
+</script>
+
+</body>
+</html>
